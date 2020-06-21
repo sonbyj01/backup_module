@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 References:
 - https://github.com/PySimpleGUI/PySimpleGUI/blob/master/DemoPrograms/Demo_Design_Pattern_Multiple_Windows3.py

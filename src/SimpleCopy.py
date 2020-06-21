@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from shutil import copy2
 from pathlib import Path
 import sys
