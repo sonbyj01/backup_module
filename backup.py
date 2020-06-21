@@ -4,7 +4,7 @@ from src.SourceFiles import SourceFiles
 
 src_path = r'D:\_Games\Gameboy'
 # source = input("Enter source drive/directories with full path: ")
-target = r'D:\_Games\Gameboy\backup'
+target = r'D:\_Games\Gameboy_Backup'
 # target = input("Enter destination drive/directories with full path: ")'
 
 x = SourceFiles(src_path)
