@@ -16,11 +16,15 @@ src/SimpleCopy.py - SimpleCopy class \
 src/SourceFiles.py - SourceFiles class
 
 ## Issues
-- [x] nothing works
-- [ ] back up folder is created but directories are not copied over
+- [X] nothing works
+- [X] back up folder is created but directories are not copied over
 until the second time the script runs in SimpleCopy class
+- [X] check if there's already a 'records.txt' that exists in **SourceFiles.py**
+- [ ] create hash to check integrity of content inside 'records.txt' ? 
 
 ## Future Development
 - [ ] docker?
 - [ ] nice web ui?
+- [X] python gui
 - [ ] integration with cloud storage service provider
+- [ ] compression (zip)
