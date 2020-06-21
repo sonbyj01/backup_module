@@ -37,9 +37,12 @@ src/SourceFiles.py - SourceFiles class
 until the second time the script runs in SimpleCopy class
 - [X] check if there's already a 'records.txt' that exists in **SourceFiles.py**
 - [ ] ~~create hash to check integrity of content inside 'records.txt' ?~~
+- [ ] thing crashes when you exit out the pop out window
+- [ ] cancel button for pop out window also crashes program
 
-## Current working on
-- [ ] compression (.zip, .tar.gz)
+## Tasks at hand
+- [X] compression .zip
+- [ ] compression .tar.gz
 
 ## Future Development
 - [ ] docker?

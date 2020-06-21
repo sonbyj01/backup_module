@@ -23,6 +23,7 @@ def generate_window2(directory):
         [sg.Text("Source Folder:", font=('Helvetica', 15), size=(40, 1), justification='center')],
         [sg.Text('{}'.format(directory), justification='center')],
         [sg.Button('Simple Copy', button_color=('white', blue))],
+        [sg.Button('Create Zip File', button_color=('white', blue))],
         [sg.Text('Status', justification='left')],
         [sg.Listbox(values=[], size=(80, 20), key='_STATUS_')]
     ]
@@ -84,15 +85,13 @@ class GUI:
 
             if self.window2_active:
                 event2, values2 = window2.read()
-                print(event2)
 
                 if event2 in (sg.WIN_CLOSED, 'Exit'):
                     self.window2_active = False
                     window2.close()
                     self.window.un_hide()
 
-                if event2 == 'Simple Copy':
-                    print('Simple Copy')
+                elif event2 == 'Simple Copy':
                     directory = sg.popup_get_folder('Target Folder: ',
                                                     title='Target',
                                                     button_color=('white', blue),
@@ -104,6 +103,15 @@ class GUI:
                     self._update_status(window2.Element('_STATUS_'),
                                         start=False,
                                         command='Simple Copy')
+
+                elif event2 == 'Create Zip File':
+                    self._update_status(window2.Element('_STATUS_'),
+                                        start=True,
+                                        command='Create Zip File')
+                    source_files.create_zip_file()
+                    self._update_status(window2.Element('_STATUS_'),
+                                        start=False,
+                                        command='Create Zip File')
 
         self.window.close()
 

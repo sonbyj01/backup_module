@@ -2,6 +2,7 @@
 from shutil import copy2
 from pathlib import Path
 import sys
+
 from .SourceFiles import SourceFiles
 
 
@@ -12,10 +13,12 @@ class SimpleCopy:
         self.source_parent = self.source_object.source_path.parents[0]
 
     def simple_copy2(self, target):
-        target_folder = Path(target)
+        try:
+            target_folder = Path(target)
+        except TypeError as fnf:
+            sys.exit()
 
         if not target_folder.exists():
-            print('Doesn\'t exist') ######################################
             target_folder.mkdir(parents=True)
 
         for source_folder_path in self.source_object.records_folder:

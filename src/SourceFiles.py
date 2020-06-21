@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
+
+##############
+# References #
+##############
+# https://pymotw.com/2/zipfile/
+
 from pathlib import Path
 import hashlib
+import zipfile
+import zlib
 import sys
 
 
@@ -14,12 +22,15 @@ class SourceFiles:
 
         self.records_text_name = 'records.txt'
         self.records_text_path = Path.joinpath(self.source_path, self.records_text_name)
+        self.zip = ''
 
-        try:
-            with open(self.records_text_path, 'r', encoding='utf-8') as f:
-                self.hash = f.readline()
-        except FileNotFoundError as fnf:
-            pass
+        # self.folder_name = self.source_path.relative_to(self.source_path.parents[0])
+
+        # try:
+        #     with open(self.records_text_path, 'r', encoding='utf-8') as f:
+        #         self.hash = f.readline()
+        # except FileNotFoundError as fnf:
+        #     pass
 
         self.records_file = []
         self.records_folder = []
@@ -66,3 +77,26 @@ class SourceFiles:
             f.write('\nFiles\n')
             for file in self.records_file:
                 f.write('{}{}'.format(str(file), '\n'))
+
+    def create_zip_file(self):
+        self.zip = zipfile.ZipFile('{}{}'.format(self.source_path, '.zip'), mode='w')
+
+        try:
+            compression = zipfile.ZIP_DEFLATED
+        except:
+            print('something\'s wrong')
+
+        modes = {
+            zipfile.ZIP_DEFLATED: 'deflated',
+            zipfile.ZIP_STORED: 'stored'
+        }
+
+        for path in self.records_file:
+            new_path = path.relative_to(self.source_path.parents[0])
+
+            try:
+                self.zip.write(path, compress_type=compression, arcname=new_path)
+            except:
+                print('something\'s wrong')
+
+        self.zip.close()
